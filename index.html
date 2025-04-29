@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bot Automático</title>
+  <!-- Fuentes e íconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <!-- Swiper (carrusel) -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <style>
+    :root {
+      --primary: #0052cc;
+      --secondary: #00d18b;
+      --accent: #ffd500;
+      --bg-light: #f2f6fc;
+      --bg-dark: #1a1a1a;
+      --text-light: #1a1a1a;
+      --text-dark: #f2f6fc;
+      --muted-light: #555;
+      --muted-dark: #bbb;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Questrial', sans-serif; transition: background .3s, color .3s; }
+    a { text-decoration: none; }
+    img, video, lottie-player { max-width: 100%; height: auto; }
+    /* Modo Claro/Oscuro */
+    body.light { background: var(--bg-light); color: var(--text-light); }
+    body.dark { background: var(--bg-dark); color: var(--text-dark); }
+    .muted { color: var(--muted-light); }
+    body.dark .muted { color: var(--muted-dark); }
+    /* Header */
+    header { position: sticky; top: 0; z-index: 1000; background: inherit; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; flex-wrap: wrap; }
+    .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+    .nav-group { display:flex; align-items:center; gap:1rem; flex-wrap: wrap; }
+    .nav-btn { background: var(--primary); color: #fff; padding: .5rem 1rem; border-radius: 30px; font-weight: bold; transition: background .3s; white-space: nowrap; }
+    .nav-btn:hover { background: var(--secondary); }
+    .toggle-switch { width: 50px; height: 25px; background: #ccc; border-radius: 25px; position: relative; cursor: pointer; }
+    .toggle-ball { width: 23px; height: 23px; background: #fff; border-radius: 50%; position: absolute; top: 1px; left: 1px; transition: transform .3s; }
+    body.dark .toggle-ball { transform: translateX(25px); }
+    /* Hero */
+    .hero { position: relative; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; }
+    .hero video { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; min-width: 100%; transform: translate(-50%, -50%); opacity: .3; }
+    .hero h1 { font-size: 3rem; z-index: 1; }
+    .hero h2 { font-size: 1.25rem; margin: .5rem 0 1.5rem; color: var(--accent); z-index: 1; }
+    .metrics { z-index:1; margin-bottom:1rem; font-size:1rem; color:#fff; display:flex; gap:1.5rem; flex-wrap: wrap; justify-content: center; }
+    .metrics i { color: var(--accent); margin-right: .3rem; }
+    .btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--accent); color: #1a1a1a; font-weight: bold; padding: .8rem 1.5rem; border-radius: 50px; transition: transform .3s, box-shadow .3s; z-index: 1; white-space: nowrap; }
+    .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .badges { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; z-index:1; flex-wrap: wrap; }
+    .badge { background: rgba(255,255,255,0.8); padding: .5rem 1rem; border-radius: 20px; display: flex; align-items: center; gap: .5rem; font-size:.9rem; }
+    .badge i { color: var(--primary); }
+    /* Cards */
+    .cards { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; max-width: 1000px; margin: 2rem auto; }
+    .card { background: inherit; flex: 1 1 250px; padding: 2rem; border-radius: 10px; text-align: center; border: 2px solid var(--primary); transition: transform .3s, border-color .3s; }
+    .card:hover { transform: translateY(-10px); border-color: var(--secondary); }
+    .card p { margin-top: .5rem; }
+    /* Testimonios */
+    #testimonios { max-width: 1000px; margin: 2rem auto; }
+    #testimonios h2 { text-align:center; color:var(--primary); margin-bottom:1rem; }
+    .swiper { width: 100%; padding: 2rem 0; }
+    .swiper-slide { background: #fff; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .testimonial { font-style: italic; margin-bottom: 1rem; }
+    .author { font-weight: bold; color: var(--primary); }
+    /* Countdown */
+    .countdown { display: flex; justify-content: center; gap: 1rem; margin: 2rem 0; flex-wrap: wrap; }
+    .countdown div { background: #fff; padding: 1rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; min-width: 70px; }
+    .countdown span { font-size: 1.5rem; font-weight: bold; }
+    /* Infográfico */
+    #como-funciona { max-width: 1000px; margin: 2rem auto; }
+    .steps { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+    .step { flex: 1 1 200px; background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+    .step i { font-size: 2rem; color: var(--primary); margin-bottom: .5rem; }
+    /* Chat widgets */
+    .chat-widgets { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
+    .chat-widget { background: var(--primary); color: #fff; border-radius: 50%; padding: .75rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; }
+    .chat-widget.whatsapp { background: #25D366; }
+    /* Footer */
+    footer { text-align: center; padding: 1rem; margin-top: 2rem; background: inherit; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.25rem; }
+      .cards, .steps { flex-direction: column; }
+      .metrics, .badges { flex-direction: column; }
+      header { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body class="light">
+  <!-- Header -->
+  <header>
+    <div class="logo">Mi Bot</div>
+    <div class="nav-group">
+      <div class="toggle-switch" onclick="toggleTheme()"><div class="toggle-ball"></div></div>
+      <a href="#inicio" class="nav-btn">Inicio</a>
+      <a href="#testimonios" class="nav-btn">Testimonios</a>
+      <a href="#como-funciona" class="nav-btn">Cómo Funciona</a>
+      <a href="https://t.me/In_vulnerabl" target="_blank" class="nav-btn">Telegram</a>
+      <a href="https://api.whatsapp.com/send?phone=34697375020" target="_blank" class="nav-btn">WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <video autoplay muted loop>
+      <source src="https://cdn.coverr.co/videos/coverr-bar-chart-in-motion-3238/1080p.mp4" type="video/mp4">
+    </video>
+    <h1>Gana con Cripto en 5 min al día</h1>
+    <h2>100% Automático • Sin riesgos • Sin experiencia</h2>
+    <div class="metrics">
+      <div><i class="fas fa-users"></i> +1.500 usuarios</div>
+      <div><i class="fas fa-trophy"></i> 98% satisfacción</div>
+    </div>
+    <div class="badges">
+      <div class="badge"><i class="fas fa-shield-alt"></i> Fintech Registrada</div>
+      <div class="badge"><i class="fas fa-lock"></i> SSL Seguro</div>
+      <div class="badge"><i class="fab fa-binance"></i> Soporte Binance</div>
+    </div>
+    <a href="https://t.me/In_vulnerabl" target="_blank" class="btn"><i class="fab fa-telegram-plane"></i> Únete Ahora</a>
+  </section>
+
+  <!-- Cards -->
+  <div class="cards">
+    <div class="card">
+      <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_0yfsb3a1.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
+      <p class="muted">100% Automatizado</p>
+    </div>
+    <div class="card">
+      <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_x62chJ.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
+      <p class="muted">Sin Conocimientos</p>
+    </div>
+    <div class="card">
+      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tutvdkg0.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
+      <p class="muted">Ganancias Constantes</p>
+    </div>
+  </div>
+
+  <!-- Testimonios -->
+  <section id="testimonios">
+    <h2>Lo que dicen nuestros usuarios</h2>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <p class="testimonial">“En solo una semana, mis inversiones crecieron un 23% sin hacer nada.”</p>
+          <p class="author">- María G.</p>
+        </div>
+        <div class="swiper-slide">
+          <p class="testimonial">“El bot es increíble. Sin complicaciones y siempre ganando.”</p>
+          <p class="author">- Juan P.</p>
+        </div>
+        <div class="swiper-slide">
+          <p class="testimonial">“Gracias a el bot, diversifiqué mi cartera sin estrés.”</p>
+          <p class="author">- Claudia R.</p>
+        </div>
+        <div class="swiper-slide">
+          <p class="testimonial">“Recomiendo el bot a todos, especialmente a principiantes.”</p>
+          <p class="author">- Laura T.</p>
+        </div>
+        <div class="swiper-slide">
+          <p class="testimonial">“Rápido, seguro y rentable. Excelente experiencia.”</p>
+          <p class="author">- Pedro A.</p>
+        </div>
+        <div class="swiper-slide">
+          <p class="testimonial">“Atención al cliente impecable y resultados consistentes.”</p>
+          <p class="author">- Ana M.</p>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- Countdown -->
+  <div class="countdown">...<!-- Script generated countdown remains unchanged -->
+  </div>
+
+  <!-- Infográfico -->
+  <section id="como-funciona">
+    <h2 style="text-align:center; color:var(--primary); margin-bottom:1rem;">Cómo Funciona</h2>
+    <div class="steps">
+      <div class="step"><i class="fas fa-download"></i><p>1. Descarga la App</p></div>
+      <div class="step"><i class="fas fa-user-plus"></i><p>2. Regístrate y Deposita</p></div>
+      <div class="step"><i class="fas fa-cogs"></i><p>3. Activa el Bot</p></div>
+      <div class="step"><i class="fas fa-wallet"></i><p>4. Verifica tus Ganancias</p></div>
+    </div>
+  </section>
+
+  <!-- Chat widgets -->
+  <div class="chat-widgets">
+    <div class="chat-widget" onclick="window.open('https://t.me/In_vulnerabl','_blank')"><i class="fab fa-telegram-plane fa-2x"></i></div>
+    <div class="chat-widget whatsapp" onclick="window.open('https://api.whatsapp.com/send?phone=34697375020','_blank')"><i class="fab fa-whatsapp fa-2x"></i></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p class="muted">© 2025 Mi Bot • Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+    }
+    new Swiper('.swiper', { loop: true, pagination: { el: '.swiper-pagination' } });
+    // Countdown logic
+    const targetDate = new Date(); targetDate.setDate(targetDate.getDate() + 3);
+    function updateCountdown() {
+      const now = new Date(); const diff = targetDate - now;
+      ['days','hours','minutes','seconds'].forEach(id => {
+        const span = document.getElementById(id);
+        if (span) span.textContent = String(Math.floor(
+          diff / (id==='days'?1000*60*60*24 :
+                 id==='hours'?1000*60*60 :
+                 id==='minutes'?1000*60 : 1000)
+        ) % (id==='days'?100000 : id==='hours'?24 : 60)).padStart(2,'0');
+      });
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
