@@ -14,15 +14,15 @@
   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
   <style>
     :root {
-      --primary: #003087;
-      --secondary: #00a86b;
-      --accent: #ffcc00;
-      --bg-light: #f5f7fa;
-      --bg-dark: #121212;
+      --primary: #002060;
+      --secondary: #008055;
+      --accent: #ffb300;
+      --bg-light: #f8f9fb;
+      --bg-dark: #0a0a0a;
       --text-light: #1a1a1a;
       --text-dark: #ffffff;
-      --muted-light: #4a4a4a;
-      --muted-dark: #cccccc;
+      --muted-light: #333333;
+      --muted-dark: #d9d9d9;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -43,12 +43,11 @@
     body.dark .toggle-ball { transform: translateX(22px); }
     .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
     .nav-menu { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .nav-menu.active { display: flex; }
     .hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; padding: 1rem; }
     .hero video { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; min-width: 100%; transform: translate(-50%, -50%); opacity: 0.4; }
     .hero h1 { font-size: calc(2rem + 2vw); z-index: 1; line-height: 1.2; }
     .hero h2 { font-size: calc(1rem + 1vw); margin: 0.5rem 0 1rem; color: var(--accent); z-index: 1; }
-    .metrics { z-index: 1; margin-bottom: 1rem; font-size: 0.9rem; color: #fff; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .metrics { z-index: 1; margin-bottom: 1rem; font-size: 0.9rem; color: #ffffff; background: rgba(0,0,0,0.6); padding: 0.5rem; border-radius: 8px; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .metrics i { color: var(--accent); margin-right: 0.3rem; }
     .btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--text-light); font-weight: bold; padding: 0.8rem 1.5rem; border-radius: 50px; transition: transform .3s, box-shadow .3s; z-index: 1; min-width: 120px; justify-content: center; }
     .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
@@ -69,7 +68,7 @@
     .testimonial { font-style: italic; margin-bottom: 0.8rem; font-size: 0.9rem; }
     .author { font-weight: bold; color: var(--primary); font-size: 0.85rem; }
     .countdown { display: flex; justify-content: center; gap: 0.8rem; margin: 1.5rem 0; flex-wrap: wrap; }
-    .countdown div { background: #fff; padding: 0.8rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; min-width: 60px; }
+    .countdown div { background: var(--primary); color: #fff; padding: 0.8rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; min-width: 60px; }
     .countdown span { font-size: 1.2rem; font-weight: bold; }
     #como-funciona { max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
     .steps { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
@@ -83,7 +82,8 @@
     footer p { font-size: 0.85rem; }
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
-      .nav-menu { display: none; flex-direction: column; width: 100%; background: inherit; padding: 1rem; position: absolute; top: 100%; left: 0; z-index: 999; transition: all .3s; }
+      .nav-menu { display: none; flex-direction: column; width: 100%; background: var(--bg-light); padding: 1rem; position: absolute; top: 100%; left: 0; z-index: 999; box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+      body.dark .nav-menu { background: var(--bg-dark); }
       .nav-menu.active { display: flex; }
       .nav-btn { width: 100%; padding: 0.6rem; margin-bottom: 0.5rem; }
       .nav-group { flex-direction: row; justify-content: space-between; width: 100%; }
