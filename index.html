@@ -3,15 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bot Automático</title>
+  <meta name="description" content="FreeBot: Gana dinero extra con un bot automático sin riesgos ni experiencia. Únete ahora y prueba gratis por 3 días.">
+  <meta name="keywords" content="bot automático, ganar dinero, inversión, fintech, sin riesgos">
+  <meta name="author" content="FreeBot">
+  <meta property="og:title" content="FreeBot - Gana Dinero Extra Automáticamente">
+  <meta property="og:description" content="Únete a FreeBot y genera ingresos con solo 5 minutos al día. 100% automático, sin riesgos ni experiencia previa.">
+  <meta property="og:image" content="https://example.com/freebot-og-image.jpg">
+  <meta property="og:url" content="https://example.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>FreeBot - Bot Automático</title>
   <!-- Fuentes e íconos -->
   <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   <!-- Lottie -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js" defer></script>
   <!-- Swiper (carrusel) -->
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js" defer></script>
   <style>
     :root {
       --primary: #002060;
@@ -26,7 +34,7 @@
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Questrial', sans-serif; transition: background .3s, color .3s; }
+    body { font-family: 'Questrial', sans-serif; transition: background .3s, color .3s; line-height: 1.6; }
     a { text-decoration: none; }
     img, video, lottie-player { max-width: 100%; height: auto; }
     body.light { background: var(--bg-light); color: var(--text-light); }
@@ -37,20 +45,20 @@
     .logo { font-size: 1.4rem; font-weight: bold; color: var(--primary); }
     .nav-group { display: flex; align-items: center; gap: 0.8rem; }
     .nav-btn { background: var(--primary); color: #fff; padding: 0.5rem 1rem; border-radius: 25px; font-weight: bold; transition: background .3s; font-size: 0.9rem; min-width: 80px; text-align: center; display: block; }
-    .nav-btn:hover { background: var(--secondary); }
+    .nav-btn:hover, .nav-btn:focus { background: var(--secondary); }
     .toggle-switch { width: 44px; height: 22px; background: #999; border-radius: 22px; position: relative; cursor: pointer; }
     .toggle-ball { width: 20px; height: 20px; background: #fff; border-radius: 50%; position: absolute; top: 1px; left: 1px; transition: transform .3s; }
     body.dark .toggle-ball { transform: translateX(22px); }
     .menu-toggle { display: none; font-size: 1.5rem; color: var(--primary); cursor: pointer; }
     .nav-menu { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .hero { position: relative; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; padding: 1rem; }
-    .hero video { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; min-width: 100%; transform: translate(-50%, -50%); opacity: 0.4; }
+    .hero video { position: absolute; top: 50%; left: 50%; width: auto; height: 100%; min-width: 100%; transform: translate(-50%, -50%); opacity: 0.4; object-fit: cover; }
     .hero h1 { font-size: calc(2rem + 2vw); z-index: 1; line-height: 1.2; }
     .hero h2 { font-size: calc(1rem + 1vw); margin: 0.5rem 0 1rem; color: var(--accent); z-index: 1; }
     .metrics { z-index: 1; margin-bottom: 1rem; font-size: 0.9rem; color: #ffffff; background: rgba(0,0,0,0.6); padding: 0.5rem; border-radius: 8px; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
     .metrics i { color: var(--accent); margin-right: 0.3rem; }
-    .btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var(--text-light); font-weight: bold; padding: 0.8rem 1.5rem; border-radius: 50px; transition: transform .3s, box-shadow .3s; z-index: 1; min-width: 120px; justify-content: center; }
-    .btn:hover { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--accent); color: var personally; font-weight: bold; padding: 0.8rem 1.5rem; border-radius: 50px; transition: transform .3s, box-shadow .3s; z-index: 1; min-width: 120px; justify-content: center; }
+    .btn:hover, .btn:focus { transform: scale(1.05); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
     .badges { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; z-index: 1; flex-wrap: wrap; }
     .badge { background: rgba(255,255,255,0.9); padding: 0.5rem 1rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
     .badge i { color: var(--primary); }
@@ -59,7 +67,7 @@
     .offer strong { font-size: 1.1rem; }
     .cards { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
     .card { background: inherit; flex: 1 1 200px; padding: 1.5rem; border-radius: 10px; text-align: center; border: 2px solid var(--primary); transition: transform .3s, border-color .3s; }
-    .card:hover { transform: translateY(-10px); border-color: var(--secondary); }
+    .card:hover, .card:focus { transform: translateY(-10px); border-color: var(--secondary); }
     .card p { margin-top: 0.5rem; font-size: 0.9rem; }
     #testimonios { max-width: 1000px; margin: 1.5rem auto; padding: 0 1rem; }
     #testimonios h2 { text-align: center; color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem; }
@@ -110,134 +118,203 @@
   </style>
 </head>
 <body class="light">
-  <header>
-    <div class="logo">Mi Bot</div>
+  <header role="banner">
+    <div class="logo">FreeBot</div>
     <div class="nav-group">
-      <div class="toggle-switch" onclick="toggleTheme()"><div class="toggle-ball"></div></div>
-      <i class="fas fa-bars menu-toggle" onclick="toggleMenu()"></i>
-      <div class="nav-menu">
-        <a href="#inicio" class="nav-btn">Inicio</a>
+      <div class="toggle-switch" role="switch" aria-checked="false" tabindex="0" onclick="toggleTheme()" onkeydown="if(event.key==='Enter')toggleTheme()">
+        <div class="toggle-ball"></div>
+      </div>
+      <i class="fas fa-bars menu-toggle" role="button" aria-label="Toggle menu" tabindex="0" onclick="toggleMenu()" onkeydown="if(event.key==='Enter')toggleMenu()"></i>
+      <nav class="nav-menu" role="navigation">
+        <a href="#inicio" class="nav-btn" aria-current="page">Inicio</a>
         <a href="#testimonios" class="nav-btn">Testimonios</a>
         <a href="#como-funciona" class="nav-btn">Cómo Funciona</a>
-        <a href="https://t.me/In_vulnerabl" target="_blank" class="nav-btn">Telegram</a>
-        <a href="https://api.whatsapp.com/send?phone=34697375020" target="_blank" class="nav-btn">WhatsApp</a>
-      </div>
+        <a href="https://t.me/In_vulnerabl" target="_blank" rel="noopener noreferrer" class="nav-btn">Telegram</a>
+        <a href="https://api.whatsapp.com/send?phone=34697375020" target="_blank" rel="noopener noreferrer" class="nav-btn">WhatsApp</a>
+      </nav>
     </div>
   </header>
-  <section class="hero" id="inicio">
-    <video autoplay muted loop>
-      <source src="https://cdn.coverr.co/videos/coverr-bar-chart-in-motion-3238/1080p.mp4" type="video/mp4">
-    </video>
-    <h1>Gana con Cripto en 5 min al día</h1>
-    <h2>100% Automático • Sin riesgos • Sin experiencia</h2>
-    <div class="metrics">
-      <div><i class="fas fa-users"></i> +1.500 usuarios</div>
-      <div><i class="fas fa-trophy"></i> 98% satisfacción</div>
-    </div>
-    <div class="badges">
-      <div class="badge"><i class="fas fa-shield-alt"></i> Fintech Registrada</div>
-      <div class="badge"><i class="fas fa-lock"></i> SSL Seguro</div>
-      <div class="badge"><i class="fab fa-binance"></i> Soporte Binance</div>
-    </div>
-    <a href="https://t.me/In_vulnerabl" target="_blank" class="btn"><i class="fab fa-telegram-plane"></i> Únete Ahora</a>
-    <div class="offer">
-      <p><strong>Prueba Gratis 3 Días</strong></p>
-      <p>Depósito mínimo <strong>$40</strong> (recomendado <strong>$150</strong>) • Máximo <strong>$500</strong></p>
-      <p><strong>+ $5 GRATIS</strong> al registrarte</p>
-      <p>Retira tu dinero cuando quieras • Ganancias aseguradas, sin riesgo de pérdida</p>
-    </div>
-  </section>
-  <div class="cards">
-    <div class="card">
-      <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_0yfsb3a1.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
-      <p class="muted">100% Automatizado</p>
-    </div>
-    <div class="card">
-      <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_x62chJ.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
-      <p class="muted">Sin Conocimientos</p>
-    </div>
-    <div class="card">
-      <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tutvdkg0.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay></lottie-player>
-      <p class="muted">Ganancias Constantes</p>
-    </div>
-  </div>
-  <section id="testimonios">
-    <h2>Lo que dicen nuestros usuarios</h2>
-    <div class="swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <p class="testimonial">“En solo una semana, mis inversiones crecieron un 23% sin hacer nada.”</p>
-          <p class="author">- María G.</p>
-        </div>
-        <div class="swiper-slide">
-          <p class="testimonial">“El bot es increíble. Sin complicaciones y siempre ganando.”</p>
-          <p class="author">- Juan P.</p>
-        </div>
-        <div class="swiper-slide">
-          <p class="testimonial">“Gracias a el bot, diversifiqué mi cartera sin estrés.”</p>
-          <p class="author">- Claudia R.</p>
-        </div>
-        <div class="swiper-slide">
-          <p class="testimonial">“Recomiendo el bot a todos, especialmente a principiantes.”</p>
-          <p class="author">- Laura T.</p>
-        </div>
-        <div class="swiper-slide">
-          <p class="testimonial">“Rápido, seguro y rentable. Excelente experiencia.”</p>
-          <p class="author">- Pedro A.</p>
-        </div>
-        <div class="swiper-slide">
-          <p class="testimonial">“Atención al cliente impecable y resultados consistentes.”</p>
-          <p class="author">- Ana M.</p>
-        </div>
+  <main>
+    <section class="hero" id="inicio" role="region" aria-labelledby="hero-title">
+      <video autoplay muted loop loading="lazy" aria-hidden="true">
+        <source src="https://cdn.coverr.co/videos/coverr-bar-chart-in-motion-3238/1080p.mp4" type="video/mp4">
+      </video>
+      <h1 id="hero-title">Gana un Dinero Extra<br>con 5 min al día</h1>
+      <h2>100% Automático • Sin riesgos • Sin experiencia</h2>
+      <div class="metrics">
+        <div><i class="fas fa-users" aria-hidden="true"></i> +1.500 usuarios</div>
+        <div><i class="fas fa-trophy" aria-hidden="true"></i> 98% satisfacción</div>
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="badges">
+        <div class="badge"><i class="fas fa-shield-alt" aria-hidden="true"></i> Fintech Registrada</div>
+        <div class="badge"><i class="fas fa-lock" aria-hidden="true"></i> SSL Seguro</div>
+        <div class="badge"><i class="fab fa-binance" aria-hidden="true"></i> Soporte Binance</div>
+      </div>
+      <a href="https://t.me/In_vulnerabl" target="_blank" rel="noopener noreferrer" class="btn"><i class="fab fa-telegram-plane" aria-hidden="true"></i> Únete Ahora</a>
+      <div class="offer">
+        <p><strong>Prueba Gratis 3 Días</strong></p>
+        <p>Depósito mínimo <strong>$40</strong> (recomendado <strong>$150</strong>) • Máximo <strong>$500</strong></p>
+        <p><strong>+ $5 GRATIS</strong> al registrarte</p>
+        <p>Retira tu dinero cuando quieras • Ganancias aseguradas, sin riesgo de pérdida</p>
+      </div>
+    </section>
+    <div class="cards" role="region" aria-label="Características">
+      <div class="card" tabindex="0">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_0yfsb3a1.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay loading="lazy"></lottie-player>
+        <p class="muted">100% Automatizado</p>
+      </div>
+      <div class="card" tabindex="0">
+        <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_x62chJ.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay loading="lazy"></lottie-player>
+        <p class="muted">Sin Conocimientos</p>
+      </div>
+      <div class="card" tabindex="0">
+        <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_tutvdkg0.json" background="transparent" speed="1" style="width:100px; height:100px; margin:auto;" loop autoplay loading="lazy"></lottie-player>
+        <p class="muted">Ganancias Constantes</p>
+      </div>
     </div>
-  </section>
-  <div class="countdown">
-    <div><span id="days">00</span><br>Días</div>
-    <div><span id="hours">00</span><br>Horas</div>
-    <div><span id="minutes">00</span><br>Minutos</div>
-    <div><span id="seconds">00</span><br>Segundos</div>
-  </div>
-  <section id="como-funciona">
-    <h2 style="text-align:center; color:var(--primary); margin-bottom:1rem;">Cómo Funciona</h2>
-    <div class="steps">
-      <div class="step"><i class="fas fa-download"></i><p>1. Descarga la App</p></div>
-      <div class="step"><i class="fas fa-user-plus"></i><p>2. Regístrate y Deposita</p></div>
-      <div class="step"><i class="fas fa-cogs"></i><p>3. Activa el Bot</p></div>
-      <div class="step"><i class="fas fa-wallet"></i><p>4. Verifica tus Ganancias</p></div>
+    <section id="testimonios" role="region" aria-labelledby="testimonios-title">
+      <h2 id="testimonios-title">Lo que dicen nuestros usuarios</h2>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <p class="testimonial">“En solo una semana, mis inversiones crecieron un 23% sin hacer nada.”</p>
+            <p class="author">- María G.</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="testimonial">“El bot es increíble. Sin complicaciones y siempre ganando.”</p>
+            <p class="author">- Juan P.</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="testimonial">“Gracias a el bot, diversifiqué mi cartera sin estrés.”</p>
+            <p class="author">- Claudia R.</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="testimonial">“Recomiendo el bot a todos, especialmente a principiantes.”</p>
+            <p class="author">- Laura T.</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="testimonial">“Rápido, seguro y rentable. Excelente experiencia.”</p>
+            <p class="author">- Pedro A.</p>
+          </div>
+          <div class="swiper-slide">
+            <p class="testimonial">“Atención al cliente impecable y resultados consistentes.”</p>
+            <p class="author">- Ana M.</p>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+    <div class="countdown" role="timer" aria-label="Cuenta regresiva para oferta">
+      <div><span id="days">00</span><br>Días</div>
+      <div><span id="hours">00</span><br>Horas</div>
+      <div><span id="minutes">00</span><br>Minutos</div>
+      <div><span id="seconds">00</span><br>Segundos</div>
     </div>
-  </section>
-  <div class="chat-widgets">
-    <div class="chat-widget" onclick="window.open('https://t.me/In_vulnerabl','_blank')"><i class="fab fa-telegram-plane fa-lg"></i></div>
-    <div class="chat-widget whatsapp" onclick="window.open('https://api.whatsapp.com/send?phone=34697375020','_blank')"><i class="fab fa-whatsapp fa-lg"></i></div>
+    <section id="como-funciona" role="region" aria-labelledby="como-funciona-title">
+      <h2 id="como-funciona-title">Cómo Funciona</h2>
+      <div class="steps">
+        <div class="step"><i class="fas fa-download" aria-hidden="true"></i><p>1. Descarga la App</p></div>
+        <div class="step"><i class="fas fa-user-plus" aria-hidden="true"></i><p>2. Regístrate y Deposita</p></div>
+        <div class="step"><i class="fas fa-cogs" aria-hidden="true"></i><p>3. Activa el Bot</p></div>
+        <div class="step"><i class="fas fa-wallet" aria-hidden="true"></i><p>4. Verifica tus Ganancias</p></div>
+      </div>
+    </section>
+  </main>
+  <div class="chat-widgets" role="complementary" aria-label="Canales de contacto">
+    <div class="chat-widget" role="button" aria-label="Contactar por Telegram" tabindex="0" onclick="window.open('https://t.me/In_vulnerabl','_blank')" onkeydown="if(event.key==='Enter')window.open('https://t.me/In_vulnerabl','_blank')">
+      <i class="fab fa-telegram-plane fa-lg" aria-hidden="true"></i>
+    </div>
+    <div class="chat-widget whatsapp" role="button" aria-label="Contactar por WhatsApp" tabindex="0" onclick="window.open('https://api.whatsapp.com/send?phone=34697375020','_blank')" onkeydown="if(event.key==='Enter')window.open('https://api.whatsapp.com/send?phone=34697375020','_blank')">
+      <i class="fab fa-whatsapp fa-lg" aria-hidden="true"></i>
+    </div>
   </div>
-  <footer>
-    <p class="muted">© 2025 Mi Bot • Todos los derechos reservados</p>
+  <footer role="contentinfo">
+    <p class="muted">© 2025 FreeBot • Todos los derechos reservados</p>
   </footer>
   <script>
+    // Theme toggle
     function toggleTheme() {
-      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.toggle('dark');
       document.body.classList.toggle('light');
+      document.querySelector('.toggle-switch').setAttribute('aria-checked', isDark);
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
+
+    // Menu toggle
     function toggleMenu() {
-      document.querySelector('.nav-menu').classList.toggle('active');
+      const menu = document.querySelector('.nav-menu');
+      const isActive = menu.classList.toggle('active');
+      document.querySelector('.menu-toggle').setAttribute('aria-expanded', isActive);
     }
-    new Swiper('.swiper', { loop: true, pagination: { el: '.swiper-pagination' } });
-    const targetDate = new Date(); targetDate.setDate(targetDate.getDate() + 3);
-    function updateCountdown() {
-      const now = new Date(); const diff = targetDate - now;
-      ['days','hours','minutes','seconds'].forEach(id => {
-        const span = document.getElementById(id);
-        if (span) span.textContent = String(Math.floor(
-          diff / (id==='days'?1000*60*60*24 :
-                 id==='hours'?1000*60*60 :
-                 id==='minutes'?1000*60 : 1000)
-        ) % (id==='days'?100000 : id==='hours'?24 : 60)).padStart(2,'0');
+
+    // Initialize Swiper
+    try {
+      new Swiper('.swiper', {
+        loop: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        slidesPerView: 1,
+        spaceBetween: 10,
+        breakpoints: {
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3, spaceBetween: 30 }
+        }
       });
+    } catch (e) {
+      console.error('Swiper initialization failed:', e);
     }
-    setInterval(updateCountdown, 1000);
+
+    // Countdown timer
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 3);
+
+    function updateCountdown() {
+      try {
+        const now = new Date();
+        const diff = targetDate - now;
+        if (diff <= 0) {
+          ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
+            const span = document.getElementById(id);
+            if (span) span.textContent = '00';
+          });
+          return;
+        }
+        const timeUnits = [
+          { id: 'days', divisor: 1000 * 60 * 60 * 24, mod: 100000 },
+          { id: 'hours', divisor: 1000 * 60 * 60, mod: 24 },
+          { id: 'minutes', divisor: 1000 * 60, mod: 60 },
+          { id: 'seconds', divisor: 1000, mod: 60 }
+        ];
+        timeUnits.forEach(({ id, divisor, mod }) => {
+          const span = document.getElementById(id);
+          if (span) {
+            span.textContent = String(Math.floor(diff / divisor) % mod).padStart(2, '0');
+          }
+        });
+      } catch (e) {
+        console.error('Countdown update failed:', e);
+      }
+    }
+
+    // Initialize theme based on localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+      document.querySelector('.toggle-switch').setAttribute('aria-checked', 'true');
+    }
+
+    // Run countdown
     updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // Keyboard accessibility for cards
+    document.querySelectorAll('.card').forEach(card => {
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          card.click();
+        }
+      });
+    });
   </script>
 </body>
 </html>
